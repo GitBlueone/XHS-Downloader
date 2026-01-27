@@ -1,4 +1,4 @@
-from source.expansion import Namespace
+from ..expansion import Namespace
 from .request import Html
 
 __all__ = ["Video"]
@@ -18,3 +18,8 @@ class Video:
             if (t := data.safe_extract(".".join(cls.VIDEO_LINK)))
             else []
         )
+
+    @classmethod
+    def get_video_thumbnail(cls, data: Namespace) -> str:
+        ext_data = data.safe_extract("imageList")
+        return ext_data[0].urlDefault if len(ext_data) > 0 else ""

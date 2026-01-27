@@ -216,6 +216,7 @@ class Download:
                     headers=headers,
                 ) as response:
                     # await sleep_time()
+                    print(f"请求中... url:{url}")
                     if response.status_code == 416:
                         raise CacheError(
                             _("文件 {0} 缓存异常，重新下载").format(temp.name),
@@ -227,6 +228,7 @@ class Download:
                     #         response.headers.get(
                     #             'content-length', 0)) or None,
                     # )
+                    print("下载中...")
                     async with open(temp, "ab") as f:
                         async for chunk in response.aiter_bytes(self.chunk):
                             await f.write(chunk)

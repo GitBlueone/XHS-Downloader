@@ -11,8 +11,11 @@ from httpx import (
     get,
 )
 
-from source.expansion import remove_empty_directories
-
+from ..expansion import remove_empty_directories
+from .static import HEADERS
+from .static import USERAGENT
+from .static import WARNING
+from .tools import logging
 from ..translation import _
 from .static import HEADERS, USERAGENT, WARNING
 from .tools import logging
